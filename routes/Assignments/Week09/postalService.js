@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* Get page for postal prices, week09 Prove */
+// get postal rates from page
 router.get('/', function(req, res, next) {
   res.render('pages/form.ejs');
 });
