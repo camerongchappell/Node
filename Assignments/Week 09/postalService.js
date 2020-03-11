@@ -1,3 +1,15 @@
+var express = require('express');
+var router = express.Router();
+
+/* Get page for postal prices, week09 Prove */
+router.get('/', function(req, res, next) {
+  res.render('pages/results.ejs', { title: 'Postal Rate Calculator' });
+});
+
+router.post('/determinePostage', function(req, res, next) {
+  determinePostage(req, res);
+});
+
 function calculateRate(weight, mail_type) {
 	var rate = 0;
 	if (mail_type == "Letters (Stamped)") {
@@ -123,7 +135,7 @@ function determinePostage(req, res) {
 	
 	var contents = {weight: weight, mail_type: mail_type, rate: rate};
 	
-	res.render('results', contents);
+	//res.render('results', contents);
 }
 
-module.exports = {determinePostage: determinePostage};
+module.exports = router;
