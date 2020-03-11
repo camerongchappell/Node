@@ -135,7 +135,7 @@ function determinePostage(req, res) {
 	
 	var contents = {weight: weight, mail_type: mail_type, rate: rate};
 	
-	//res.render('results', contents);
+	res.render('results', contents);
 }
 
 module.exports = router;
