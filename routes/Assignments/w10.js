@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+var router = express.Router();
 
 // Following the "Single query" approach from: https://node-postgres.com/features/pooling#single-query
 
@@ -13,24 +13,14 @@ const connectionString = process.env.DATABASE_URL || "postgres://test_user:test_
 // Establish a new connection to the data source specified the connection string.
 const pool = new Pool({connectionString: connectionString});
 
+router.post('/getSuit', function(req, res, next) {
+	getSuit(req, res);
+	});
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
-
-// This says that we want the function "getPerson" below to handle
-// any requests that come to the /getPerson endpoint
-app.get('/getSuit', getSuit);
-
-// Start the server running
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-
-
-// This function handles requests to the /getPerson endpoint
-// it expects to have an id on the query string, such as: http://localhost:5000/getPerson?id=1
+// This function handles requests to the /getSuit endpoint
+// it expects to have an id on the query string, such as: http://localhost:5000/getSuit?id=1
 function getSuit(request, response) {
-	// First get the person's id
+	// First get the suit's id
 	const id = request.query.id;
 
 	// TODO: We should really check here for a valid id before continuing on...
@@ -40,7 +30,7 @@ function getSuit(request, response) {
 		// This is the callback function that will be called when the DB is done.
 		// The job here is just to send it back.
 
-		// Make sure we got a row with the person, then prepare JSON to send back
+		// Make sure we got a row with the suit, then prepare JSON to send back
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
@@ -50,11 +40,11 @@ function getSuit(request, response) {
 	});
 }
 
-// This function gets a person from the DB.
+// This function gets a suit from the DB.
 // By separating this out from the handler above, we can keep our model
-// logic (this function) separate from our controller logic (the getPerson function)
+// logic (this function) separate from our controller logic (the getSuit function)
 function getSuitFromDb(id, callback) {
-	console.log("Getting person from DB with id: " + id);
+	console.log("Getting suit from DB with id: " + id);
 
 	// Set up the SQL that we will use for our query. Note that we can make
 	// use of parameter placeholders just like with PHP's PDO.
@@ -86,4 +76,6 @@ function getSuitFromDb(id, callback) {
 		callback(null, result.rows);
 	});
 
-} // end of getPersonFromDb
+} // end of getSuitFromDb
+
+module.exports = router;
