@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 var router = express.Router();
 
+/*router.post('/getSuit', function(req, res, next) {
+	getSuit(req, res);
+	});*/
+router.get('/getSuit', function (req, res) {
+	  res.send({"id": "1"})
+	})
+
 // Following the "Single query" approach from: https://node-postgres.com/features/pooling#single-query
 
 const { Pool } = require("pg"); // This is the postgres database connection module.
@@ -12,10 +19,6 @@ const connectionString = process.env.DATABASE_URL || "postgres://test_user:test_
 
 // Establish a new connection to the data source specified the connection string.
 const pool = new Pool({connectionString: connectionString});
-
-router.post('/getSuit', function(req, res, next) {
-	getSuit(req, res);
-	});
 
 // This function handles requests to the /getSuit endpoint
 // it expects to have an id on the query string, such as: http://localhost:5000/getSuit?id=1
