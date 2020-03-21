@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 .use(express.urlencoded({ extended: true}))
 .use(express.json())
 .get('/', (req, res) => res.render('pages/form')) // this is for your homepage, i.e. localhost:5000/
-.get('/w10/getSuit', (req, res) => res.render('pages/index'))
+//.get('/w10/getSuit', (req, res) => res.render('pages/index'))
 .use('/postalService', w09Router)
 .use('/w10', w10Router);
 
