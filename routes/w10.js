@@ -2,12 +2,6 @@ const express = require('express');
 const app = express();
 var router = express.Router();
 
-/*router.post('/getSuit', function(req, res, next) {
-	getSuit(req, res);
-	});*/
-/*router.get('/getSuit', function(req, res, next) {
-	  res.render('pages/index.ejs');
-	});*/
 router.get("/getSuit", getSuit);
 
 const indexPath = 'pages/index';
