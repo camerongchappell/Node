@@ -1,0 +1,7 @@
+body {
+	background-image: url("background.jfif"); 
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
