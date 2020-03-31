@@ -3,9 +3,7 @@ const app = express();
 var router = express.Router();
 
 router.get("/getSuit", getSuit);
-router.get('/suitDetails', function(req, res, next) {
-	  res.render('pages/suitDetails.ejs');
-	});
+router.get('/suitDetails', getSuitDetails);
 
 const indexPath = 'pages/index';
 
@@ -28,6 +26,17 @@ function getSuit(req, res) {
 		}
 		else {
 			res.render(indexPath, {suitResults: suitResults});
+		}
+	});
+}
+
+function getSuitDetails(req, res) {
+	getSuitsFromDb(function(error, suitResults) {
+		if (error || suitResults == null) {
+			res.status(500).json({success:false, data:error});
+		}
+		else {
+			res.render('pages/suitDetails', {suitResults: suitResults});
 		}
 	});
 }
