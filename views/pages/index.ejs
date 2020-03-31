@@ -23,7 +23,7 @@
             <div class="col-lg-6">
             Missing suit? <a href="">Create one!</a><br>
             <% suitResults.forEach(function(suitResult){ %>
-            	<%- include('../partials/suitResults', {name: suitResult.name}); %>
+            	<%- include('../partials/suitResults', {name: suitResult.name, color: suitResult.color }); %>
            	<% }); %>
             </div>
             <div class="col-lg-6">

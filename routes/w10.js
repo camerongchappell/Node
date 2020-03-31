@@ -3,7 +3,7 @@ const app = express();
 var router = express.Router();
 
 router.get("/getSuit", getSuit);
-router.get('/suitDetails', function(req, res, next) {
+router.get('/w10/suitDetails', function(req, res, next) {
 	  res.render('pages/suitDetails.ejs');
 	});
 
