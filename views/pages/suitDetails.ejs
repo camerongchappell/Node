@@ -4,7 +4,7 @@
     <title>Spider-Man Suit Details</title>
     <meta charset="utf-8">
     <meta name="author" content="Cameron Chappell">
-    <link rel="stylesheet" type="text/css" href="images.css">
+   	<link href="/stylesheets/images.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="../../shared/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../shared/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,6 +18,9 @@
 <body style="color:#f2f2f2">
     <div class="container">
         <h1 style="text-align:center">Spider-Man Suit Details</h1> 
+            <% suitDetails.forEach(function(suitDetail){ %>
+            	<%- include('../partials/suitDetailsResults', {id: suitDetail.id, name: suitDetail.name, color: suitDetail.color, image: suitDetail.image }); %>
+           	<% }); %>
          <a href="/w10/getSuit">Back</a>
     </div>
 </body>

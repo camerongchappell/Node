@@ -21,7 +21,7 @@
         <h6 style="text-align:center"><a href="">Sign out</a></h6>
         <div class="row">
             <div class="col-lg-6">
-            Missing suit? <a href="">Create one!</a><br>
+            Missing suit? <a href="/w10/addSuit">Add one!</a><br>
             <% suitResults.forEach(function(suitResult){ %>
             	<%- include('../partials/suitResults', {id: suitResult.id, name: suitResult.name, color: suitResult.color }); %>
            	<% }); %>

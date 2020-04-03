@@ -1,0 +1,25 @@
+body {
+	background-image: url("Spider_Man2.jpg"); 
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center; 
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+ #login .container #login-row #login-column #login-box {
+   max-width: 600px;
+   height: auto;
+   border: 1px solid #9C9C9C;
+ }
+ #login .container #login-row #login-column #login-box #login-form {
+   padding: 20px;
+ }
+ #login .container #login-row #login-column #login-box #login-form #register-link {
+   margin-top: -85px;
+ }
+
+ .wide-item {
+   width: 50%;
+ }

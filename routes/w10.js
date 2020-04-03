@@ -2,8 +2,21 @@ const express = require('express');
 const app = express();
 var router = express.Router();
 
+router.get('/signIn', function(req, res, next) {
+	  res.render('pages/signIn.ejs');
+	});
+router.get('/signUp', function(req, res, next) {
+	  res.render('pages/signUp.ejs');
+	});
 router.get("/getSuit", getSuit);
+/*router.get('/suitDetails', function(req, res, next) {
+	  res.render('pages/suitDetails.ejs');
+	});*/
 router.get('/suitDetails', getSuitDetails);
+router.get('/addSuit', function(req, res, next) {
+	  res.render('pages/addSuit.ejs');
+	});
+
 
 const indexPath = 'pages/index';
 
@@ -31,12 +44,12 @@ function getSuit(req, res) {
 }
 
 function getSuitDetails(req, res) {
-	getSuitsFromDb(function(error, suitResults) {
-		if (error || suitResults == null) {
+	getSuitsFromDb(function(error, suitDetails) {
+		if (error || suitDetails == null) {
 			res.status(500).json({success:false, data:error});
 		}
 		else {
-			res.render('pages/suitDetails', {suitResults: suitResults});
+			res.render('pages/suitDetails', {suitDetails: suitDetails});
 		}
 	});
 }
