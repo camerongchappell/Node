@@ -44,7 +44,8 @@ function getSuit(req, res) {
 }
 
 function getSuitDetails(req, res) {
-	getSuitDetailsFromDb(function(error, suitDetails) {
+	var suitId = req.query.id;
+	getSuitDetailsFromDb(suitId, function(error, suitDetails) {
 		if (error || suitDetails == null) {
 			res.status(500).json({success:false, data:error});
 		}
@@ -71,9 +72,9 @@ function getSuitsFromDb(callback) {
 	});
 }
 
-function getSuitDetailsFromDb(callback) {
-	console.log(callback)
-	var sql = "SELECT * FROM SUIT WHERE id = '2'";
+function getSuitDetailsFromDb(suitId, callback) {
+	var id = suitId;
+	var sql = "SELECT * FROM SUIT WHERE id = id";
 	pool.query(sql, function(err, result) {
 		if (err) {
 			console.log("Error in query: ")
