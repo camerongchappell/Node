@@ -44,7 +44,7 @@ function getSuit(req, res) {
 }
 
 function getSuitDetails(req, res) {
-	getSuitsFromDb(function(error, suitDetails) {
+	getSuitDetailsFromDb(function(error, suitDetails) {
 		if (error || suitDetails == null) {
 			res.status(500).json({success:false, data:error});
 		}
@@ -55,6 +55,23 @@ function getSuitDetails(req, res) {
 }
 
 function getSuitsFromDb(callback) {
+	var sql = "SELECT * FROM SUIT";
+	pool.query(sql, function(err, result) {
+		if (err) {
+			console.log("Error in query: ")
+			console.log(err);
+			callback(err, null);
+		}
+		else {
+			// Log this to the console for debugging purposes.
+			console.log("Found result: " + JSON.stringify(result.rows));
+			// (The first parameter is the error variable, so we will pass null.)
+			callback(null, result.rows);	
+		}
+	});
+}
+
+function getSuitDetailsFromDb(callback) {
 	var sql = "SELECT * FROM SUIT";
 	pool.query(sql, function(err, result) {
 		if (err) {
