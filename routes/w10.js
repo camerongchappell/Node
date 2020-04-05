@@ -26,17 +26,17 @@ const indexPath = 'pages/index';
 
 // Following the "Single query" approach from: https://node-postgres.com/features/pooling#single-query
 
-/*const { Pool } = require("pg"); // This is the postgres database connection module.
+const { Pool } = require("pg"); // This is the postgres database connection module.
 
 // This says to use the connection string from the environment variable, if it is there,
 // otherwise, it will use a connection string that refers to a local postgres DB
 const connectionString = process.env.DATABASE_URL || "postgres://test_user:test_pass@localhost:5432/spiderman";
 
 // Establish a new connection to the data source specified the connection string.
-const pool = new Pool({connectionString: connectionString});*/
+const pool = new Pool({connectionString: connectionString});
 
 
-const {Pool, Client} = require('pg')
+/*const {Pool, Client} = require('pg')
 
 const pool = new Pool ({
 	user:"test_user",
@@ -44,7 +44,7 @@ const pool = new Pool ({
 	database:"spiderman",
 	password: "test_pass",
 	port: 5432
-})
+})*/
 
 // This function handles requests to the /getSuit endpoint
 function getSuit(req, res) {
