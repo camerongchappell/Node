@@ -19,7 +19,7 @@
     <div class="container">
         <h1 style="text-align:center">Spider-Man Suit Details</h1> 
             <% suitDetails.forEach(function(suitDetail){ %>
-            	<%- include('../partials/suitDetailsResults', {id: suitDetail.id, name: suitDetail.name, color: suitDetail.color, image: suitDetail.image }); %>
+            	<%- include('../partials/suitDetailsResults', {id: suitDetail.id, name: suitDetail.name, color: suitDetail.color, year_created :suitDetail.year_created, info: suitDetail.info, image: suitDetail.image }); %>
            	<% }); %>
          <a href="/w10/getSuit">Back</a>
     </div>
