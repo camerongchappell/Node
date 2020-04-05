@@ -73,8 +73,7 @@ function getSuitsFromDb(callback) {
 }
 
 function getSuitDetailsFromDb(suitId, callback) {
-	var id = suitId;
-	var sql = "SELECT * FROM SUIT WHERE id = id";
+	var sql = "SELECT * FROM SUIT WHERE id = '" + suitId + "'";
 	pool.query(sql, function(err, result) {
 		if (err) {
 			console.log("Error in query: ")
