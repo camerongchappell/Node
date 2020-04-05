@@ -5,10 +5,6 @@
 	<link href="/stylesheets/background.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<script type="text/javascript">
-	var myVar = <%- id %>
-	document.write(myVar)
-</script>
-	<p><a href="/w10/suitDetails" onclick="location.href=this.href+'?id='+myVar;return false;"><strong><%= name %></strong></a></p>
+	<p><a href="/w10/suitDetails?id=<%= id %>"><strong><%= name %></strong></a></p>
 </body>
 </html>
