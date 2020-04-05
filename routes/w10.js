@@ -8,13 +8,17 @@ router.get('/signIn', function(req, res, next) {
 router.get('/signUp', function(req, res, next) {
 	  res.render('pages/signUp.ejs');
 	});
+
 router.get("/getSuit", getSuit);
-/*router.get('/suitDetails', function(req, res, next) {
-	  res.render('pages/suitDetails.ejs');
-	});*/
 router.get('/suitDetails', getSuitDetails);
+
+
 router.get('/addSuit', function(req, res, next) {
 	  res.render('pages/addSuit.ejs');
+	});
+
+router.post('/insertSuit', function(req, res, next) {
+	  insertSuit(req, res);
 	});
 
 
@@ -53,6 +57,21 @@ function getSuitDetails(req, res) {
 			res.render('pages/suitDetails', {suitDetails: suitDetails});
 		}
 	});
+}
+
+function insertSuit(req, res) {
+	var sql = "INSERT INTO SUIT (name, color, image, year_created, info) VALUES('" + req.body.suitName + "', '" + req.body.color + "', '" + req.body.image + "', '" + req.body.year + "', '" + req.body.info + "')";
+	pool.query(sql, function(err, result) {
+		if (err) {
+			console.log("Error in query: ")
+			console.log(err);
+		}
+		else {
+			// Log this to the console for debugging purposes.
+			console.log("Found result: " + JSON.stringify(result.rows));
+		}
+	});
+	res.render('pages/addSuit');
 }
 
 function getSuitsFromDb(callback) {
